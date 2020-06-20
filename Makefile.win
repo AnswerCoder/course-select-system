@@ -1,0 +1,31 @@
+# Project: CSS4
+# Makefile created by Dev-C++ 5.9.2
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = global.o interface.o
+LINKOBJ  = global.o interface.o
+LIBS     = -L"E:/DEVC++/devcpp_setup/MinGW64/lib" -L"E:/DEVC++/devcpp_setup/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"E:/DEVC++/devcpp_setup/MinGW64/include" -I"E:/DEVC++/devcpp_setup/MinGW64/x86_64-w64-mingw32/include" -I"E:/DEVC++/devcpp_setup/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include"
+CXXINCS  = -I"E:/DEVC++/devcpp_setup/MinGW64/include" -I"E:/DEVC++/devcpp_setup/MinGW64/x86_64-w64-mingw32/include" -I"E:/DEVC++/devcpp_setup/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"E:/DEVC++/devcpp_setup/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++"
+BIN      = CSS4.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+global.o: global.cpp
+	$(CPP) -c global.cpp -o global.o $(CXXFLAGS)
+
+interface.o: interface.cpp
+	$(CPP) -c interface.cpp -o interface.o $(CXXFLAGS)
